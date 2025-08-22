@@ -167,22 +167,43 @@ class Conta_Corrente(Conta):
         """
 
 def limpar_terminal():
-    input("Aperte qualquer tecla para continuar")
+    input("\n\nAperte qualquer tecla para continuar: ")
     os.system('cls')
 
 def main():
+    os.system('cls')
     MENSAGEM = """
-    Digite:\n
     Novo Usuário:\t[u]
     Nova Conta:\t\t[c]
     Listar Conta:\t[l]
     Sacar:\t\t[s]
     Depositar:\t\t[d]
     Extrato:\t\t[e]
-    Sair:\t\t[s]
+    Sair:\t\t[q]
     """
     while True:
+        print(" BEM VINDO AO BANCO SEM NOME ".center(36,"#"))
         print(MENSAGEM)
-        limpar_terminal()
+        opcao = input("Digite uma das opções: ")
+        if opcao == "u":
+            print()
+        elif opcao == "c":
+            print()
+        elif opcao == "l":
+            print()
+        elif opcao == "s":
+            print()
+        elif opcao == "d":
+            print()
+        elif opcao == "e":
+            print()
+        elif opcao == "q":
+            os.system('cls')
+            print("Obrigado por usar nossos serviços!\n\n")
+            break
+        else:
+            print("\n\nDigite uma opção válida!")
+            limpar_terminal()
+
     
 main()
