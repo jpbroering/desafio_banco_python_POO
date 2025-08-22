@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 import os
+
 class Cliente:
     def __init__(self, endereco):
         self._endereco = endereco
@@ -18,6 +19,9 @@ class Pessoa_Fisica(Cliente):
         self._nome = nome
         self._data_nascimento = data_nascimento
         self._cpf = cpf
+    
+    def __str__(self):
+        return f"Nome:\t\t\t{self._nome}\nData de nascimento:\t{self._data_nascimento}\CPD:\t\t\t{self._cpf}\nEndereço:\t\t{self._endereco}"
 
 # Interface de Transação
 class Transacao(ABC):
@@ -166,12 +170,14 @@ class Conta_Corrente(Conta):
             Titular:\t{self.cliente}
         """
 
-def limpar_terminal():
-    input("\n\nAperte qualquer tecla para continuar: ")
+# recebe um boolean e limpa o terminal 
+def limpar_terminal(*,mode:bool=True):
+    if mode:
+        input("\nDigite qualquer tecla para continuar: ")
     os.system('cls')
 
 def main():
-    os.system('cls')
+    limpar_terminal(mode=False)
     MENSAGEM = """
     Novo Usuário:\t[u]
     Nova Conta:\t\t[c]
@@ -181,24 +187,40 @@ def main():
     Extrato:\t\t[e]
     Sair:\t\t[q]
     """
+    contas = []
+    usuarios = []
     while True:
         print(" BEM VINDO AO BANCO SEM NOME ".center(36,"#"))
         print(MENSAGEM)
         opcao = input("Digite uma das opções: ")
+
         if opcao == "u":
-            print()
+            limpar_terminal(mode=False)
+            nome = input("\nDigite o nome do completo: ")
+            data = input("\nDigite a sua data de nascimento: ")
+            cpf = input("\nDigite o seu cpf: ")
+            endereco = input("\nDigite o seu endereco: ")
+            usuarios.append(Pessoa_Fisica(nome,data,cpf,endereco))
+            print(usuarios[0])
+            limpar_terminal()
         elif opcao == "c":
-            print()
+            limpar_terminal(mode=False)
+
         elif opcao == "l":
-            print()
+            limpar_terminal(mode=False)
+
         elif opcao == "s":
-            print()
+            limpar_terminal(mode=False)
+
         elif opcao == "d":
-            print()
+            limpar_terminal(mode=False)
+
         elif opcao == "e":
-            print()
+            limpar_terminal(mode=False)
+
         elif opcao == "q":
-            os.system('cls')
+            limpar_terminal(mode=False)
+
             print("Obrigado por usar nossos serviços!\n\n")
             break
         else:
