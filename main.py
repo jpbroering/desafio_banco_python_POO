@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
-
+import os
 class Cliente:
     def __init__(self, endereco):
         self._endereco = endereco
@@ -165,26 +165,24 @@ class Conta_Corrente(Conta):
             C/C:\t{self._numero}
             Titular:\t{self.cliente}
         """
-# pessoa = Pessoa_Fisica("Joao", "13-06-2006", "12312312306", "Rua exemplo")
 
-# conta = Conta_Corrente.criar_conta(pessoa, 1)
+def limpar_terminal():
+    input("Aperte qualquer tecla para continuar")
+    os.system('cls')
 
-# pessoa.adicionar_conta(conta)
-
-# pessoa.realizar_transacao(pessoa._contas[0],Deposito(500))
-
-# pessoa.realizar_transacao(pessoa._contas[0],Deposito(-500))
-
-# pessoa.realizar_transacao(pessoa._contas[0],Saque(-100))
-
-# pessoa.realizar_transacao(pessoa._contas[0],Saque(600))
-
-# pessoa.realizar_transacao(pessoa._contas[0],Saque(300))
-
-# pessoa.realizar_transacao(pessoa._contas[0],Saque(400))
-
-# pessoa.realizar_transacao(pessoa._contas[0],Saque(100))
-
-# pessoa.realizar_transacao(pessoa._contas[0],Saque(100))
-
-# pessoa.realizar_transacao(pessoa._contas[0],Saque(100))
+def main():
+    MENSAGEM = """
+    Digite:\n
+    Novo Usuário:\t[u]
+    Nova Conta:\t\t[c]
+    Listar Conta:\t[l]
+    Sacar:\t\t[s]
+    Depositar:\t\t[d]
+    Extrato:\t\t[e]
+    Sair:\t\t[s]
+    """
+    while True:
+        print(MENSAGEM)
+        limpar_terminal()
+    
+main()
